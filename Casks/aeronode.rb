@@ -11,6 +11,12 @@ cask "aeronode" do
 
   app "AeroNode.app"
 
+  postflight do
+    system_command "xattr",
+                   args: ["-cr", "#{appdir}/AeroNode.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Application Support/com.vitaliibazavluk.AeroNode",
     "~/Library/Preferences/com.vitaliibazavluk.AeroNode.plist",
